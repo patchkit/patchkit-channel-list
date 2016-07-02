@@ -1,5 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
+import t from 'patchwork-translations'
 
 function cls (selected, hasNew) {
   return classNames({ 'channel-list-item': true, flex: true, selected: selected, unread: hasNew })
@@ -106,24 +107,24 @@ export default class ChannelList extends React.Component {
       <div className="channel-list-ctrls">
         <div className="search">
           <i className="fa fa-hashtag" />
-          <input ref="searchInput" type="text" placeholder="New Channel" value={search} onChange={this.onSearchChange.bind(this)} onKeyDown={this.onSearchKeyDown.bind(this)} />
+          <input ref="searchInput" type="text" placeholder={t('channelList.NewChannel')} value={search} onChange={this.onSearchChange.bind(this)} onKeyDown={this.onSearchKeyDown.bind(this)} />
         </div>
       </div>
-      { pinnedChannels.length ? <div className="channel-list-heading">Channels</div> : '' }
+      { pinnedChannels.length ? <div className="channel-list-heading">{t('channelList.Channels')}</div> : '' }
       { pinnedChannels.map(renderChannel) }
       <hr/>
       { unpinnedChannels.map(renderChannel) }
       <hr/>
       <div style={{fontWeight: 'normal', color: 'gray', padding: '0 10px'}}>
-        <p><small>Channels are topical filters for conversations.</small></p>
+        <p><small>{t('channelList.ChannelsInfo')}</small></p>
         <p>
           { search
             ? (hasExactMatch
-              ? <small><a href='javascript:;' onClick={this.onClickOpen.bind(this)}>Open "#{search}"</a> | </small>
-              : <small><a href='javascript:;' onClick={this.onClickCreate.bind(this)}>Create "#{search}"</a> | </small>)
+              ? <small><a href='javascript:;' onClick={this.onClickOpen.bind(this)}>{t('channelList.Open', {channel: search})}</a> | </small>
+              : <small><a href='javascript:;' onClick={this.onClickCreate.bind(this)}>{t('channelList.Create', {channel: search})}</a> | </small>)
             : '' }
           { search
-            ? <small><a href='javascript:;' onClick={this.onClearSearch.bind(this)}>Clear filter</a></small>
+            ? <small><a href='javascript:;' onClick={this.onClearSearch.bind(this)}>{t('channelList.ClearFilter')}</a></small>
             : '' }
         </p>
       </div>

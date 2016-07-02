@@ -21,6 +21,7 @@
   "homepage": "https://github.com/patchkit/patchkit-channel-list#readme",
   "dependencies": {
     "classnames": "^2.2.3",
+    "patchwork-translations": "^1.0.0",
     "react": "^0.14.6"
   },
   "devDependencies": {
